@@ -7,10 +7,9 @@ Router.route('/')
         Post.find({}, '-content', (err, posts) => {
             if (err) return res.status(500).send(err);
             res.send(posts);
-        })
+        }).sort({ createdAt: -1 })
     })
     .post((req, res) => {
-        console.log(req.body);
         const newPost = new Post(req.body);
 
         newPost.save((err, savedPost) => {

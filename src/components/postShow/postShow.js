@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPost, deletePost } from '../actions/index';
+import { fetchPost, deletePost } from './postShow.redux';
 import { Link, browserHistory } from 'react-router';
 
 class PostShow extends Component {
@@ -18,7 +18,7 @@ class PostShow extends Component {
     }
 
     renderPost(post) {
-        if (!post || (post._id != this.props.params.id)) {
+        if (!post || (post._id !== this.props.params.id)) {
             return null;
         } else {
             return (
@@ -46,8 +46,8 @@ class PostShow extends Component {
     }
 }
 
-function mapStateToProps({ posts: { post } }) {
-    return { post }
+function mapStateToProps({ post }) {
+    return { ...post };
 }
 
 export default connect(mapStateToProps, { fetchPost, deletePost })(PostShow);

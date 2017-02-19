@@ -13,7 +13,14 @@ const PostSchema = new Schema({
     content: {
         type: String,
         required: true
+    },
+    featured: {
+        type: Boolean,
+        required: true
+    },
+    img: {
+        type: String
     }
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('Post', PostSchema);
